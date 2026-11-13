@@ -27,6 +27,8 @@ export async function buildSite(root = runtimeRoot, destination = path.join(root
   const config = await readPublicConfig(root, env);
   if (!config.configured) throw Error('MAKROSKY public Supabase configuration is required for publication.');
   let patchedEntryCount = 0;
+  let patchedEntryPath;
+  let patchedEntryHash;
   const web=JSON.parse(await fs.readFile(path.join(root,'web/WEB_FILES.json'),'utf8'));
   if(web.release!=='MakroskyCadFlow_FinalProcess_v1'||!web.files?.['index.html']||!web.files?.['sw.js'])throw Error('V51 web derlemesi eksik veya eski.');
   for (const name of publicEntries) await fs.access(path.join(root, name));
@@ -56,11 +58,29 @@ export async function buildSite(root = runtimeRoot, destination = path.join(root
       const newValue = `supabaseUrl:${JSON.stringify(config.supabaseUrl)},supabasePublishableKey:${JSON.stringify(config.supabasePublishableKey)}`;
       if (code.split(oldValue).length !== 2) throw Error('CadFlow application entry public config slot missing or ambiguous.');
       output = Buffer.from(code.replace(oldValue, newValue), 'utf8');
+      patchedEntryPath = relative;
+      patchedEntryHash = crypto.createHash('sha256').update(output).digest('hex');
       patchedEntryCount++;
     }
     await fs.writeFile(target,output);
   }
   if (patchedEntryCount !== 1) throw Error('Exactly one CadFlow entry chunk must receive public cloud configuration.');
+  // Update the installed PWA's revision map and cache identity for patched JS.
+  // Otherwise the worker might serve a previously cached JS entry after deploy.
+  const workerPath = path.join(destination, 'sw.js');
+  let worker = await fs.readFile(workerPath, 'utf8');
+  const revPrefix = `${JSON.stringify(patchedEntryPath)}:"`;
+  const revOffset = worker.indexOf(revPrefix);
+  if (revOffset < 0 || worker.indexOf(revPrefix, revOffset + 1) !== -1) throw Error('CadFlow PWA asset revision slot missing or ambiguous.');
+  const revStart = revOffset + revPrefix.length;
+  const oldRevision = worker.slice(revStart, revStart + 64);
+  if (!/^[a-f0-9]{64}$/.test(oldRevision) || worker[revStart + 64] !== '"') throw Error('Invalid PWA entry revision.');
+  worker = worker.slice(0, revStart) + patchedEntryHash + worker.slice(revStart + 64);
+  const buildIdentity = /const PLMR_ASSET_BUILD="[a-f0-9]{20}";/;
+  if (!buildIdentity.test(worker)) throw Error('PWA build identity missing.');
+  const newBuild = crypto.createHash('sha256').update(worker).digest('hex').slice(0,20);
+  worker = worker.replace(buildIdentity, `const PLMR_ASSET_BUILD="${newBuild}";`);
+  await fs.writeFile(workerPath, worker);
   await fs.writeFile(path.join(destination, '.nojekyll'), '');
   await fs.writeFile(path.join(destination, 'plmr-public-config.json'), JSON.stringify(config, null, 2) + '\n');
   const hashes = {};
