@@ -19,6 +19,9 @@ export async function verifySite(root = path.join(runtimeRoot, '_site')) {
   const builtEntry=await fs.readFile(path.join(root,mainEntries[0]),'utf8');
   const expectedCloudConfig=`supabaseUrl:${JSON.stringify(cloudConfig.supabaseUrl)},supabasePublishableKey:${JSON.stringify(cloudConfig.supabasePublishableKey)}`;
   if(!builtEntry.includes(expectedCloudConfig))throw Error('Public cloud key was not embedded in the browser entry script.');
+  const worker=await fs.readFile(path.join(root,'sw.js'),'utf8');
+  const expectedRevision=`${JSON.stringify(mainEntries[0])}:${JSON.stringify(crypto.createHash('sha256').update(builtEntry).digest('hex'))}`;
+  if(!worker.includes(expectedRevision))throw Error('PWA cache revision does not match the public-configured JS entry.');
   if(manifest.webRuntime!=='split'||entry.length>5000||!/<script\s+type="module"[^>]+src=/.test(entry))throw Error('Parçalı web girişi yayınlanmadı.');
   const names = (await filesIn(root)).map(file => path.relative(root, file).split(path.sep).join('/'));
   const expected = new Set([...Object.keys(manifest.files), manifest.selfExcluded]);
