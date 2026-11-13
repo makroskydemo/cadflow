@@ -1,0 +1,64 @@
+(function(root){
+root.createGiyotinDrawingController=function(target,initialInput,host){
+'use strict';
+const S=root.PLMRGiyotinState,D2=root.PLMRGiyotin2DDocument,Pdf=root.PLMRGiyotinPdfExporter,Dxf=root.PLMRGiyotinDxfExporter,Dae=root.PLMRGiyotinDaeExporter;
+const V=root.createPLMRGiyotinViewer(),P2=root.createPLMRGiyotin2DPreview(),RAL={all:host.colors};
+const $=id=>target.querySelector('[data-engine-id="'+id+'"]');
+let project=initialInput,selected=new Set(),viewerReady=false,lastInspection=null,last2dDocument=null,previewMode=initialInput.drawingSettings.previewMode||'2D',disposed=false;
+let viewFitted=true;
+const handlers=[];
+function on(id,event,fn){const el=$(id);if(el){el.addEventListener(event,fn);handlers.push(()=>el.removeEventListener(event,fn));}}
+function setStatus(message,error){host.status(message,error);}
+function canExport(){if(host.canExport())return true;setStatus('Çıktı indirme yetkiniz bulunmuyor.',true);return false;}
+function download(name,data,type){if(disposed||!canExport())return;const blob=data instanceof Blob?data:new Blob([data],{type:type||'application/octet-stream'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),600);host.exported(name,type);}
+function renderControls(){
+ const u=dimensionUnits();
+ [['previewMmBtn',u.mm],['previewInchBtn',u.inch]].forEach(([id,on])=>{$(id).classList.toggle('is-on',on);$(id).classList.toggle('is-off',!on);$(id).setAttribute('aria-pressed',String(on));});
+ $('previewColumnsSelect').value=String(layoutColumns());$('previewColumnsSelect').disabled=host.readOnly();$('productionBtn').disabled=!host.canProduce?.();
+ [['toggleDimensionsBtn',Boolean(project.drawingSettings.showDimensions)],['toggleOpenStateBtn',project.drawingSettings.openState==='OPEN'],['fitViewBtn',viewFitted]].forEach(([id,on])=>{$(id).classList.add('state-toggle');$(id).classList.toggle('is-active',on);$(id).classList.toggle('is-on',on);$(id).classList.toggle('is-off',!on);$(id).setAttribute('aria-pressed',String(on));});
+ $('toggleDimensionsBtn').textContent='Ölçüler';$('toggleOpenStateBtn').textContent=project.drawingSettings.openState==='OPEN'?'Açık':'Kapalı';
+ [['preview2dBtn',previewMode==='2D'],['preview3dBtn',previewMode==='3D']].forEach(([id,on])=>{$(id).classList.toggle('is-active',on);$(id).setAttribute('aria-pressed',String(on));});
+ const valid=S.validateProject(project).valid;['download2dPdfBtn','downloadDxfBtn','download3dPdfBtn','downloadDaeBtn'].forEach(id=>{$(id).disabled=!valid||!host.canExport();});
+}
+function syncSelectedActions(){const items=project.positions.filter(p=>selected.has(p.id));$('selected3dActions').hidden=!items.length||host.readOnly();$('selected3dLabel').textContent=items.length===1?items[0].positionNo:items.length+' Poz';$('selectedEditPositionBtn').disabled=items.length!==1;$('selectedDeletePositionBtn').textContent=items.length>1?'Seçilenleri Sil':'Sil';}
+function applySelection(){project.drawingSettings.selectedPositionId=[...selected].at(-1)||'';V.highlightMany([...selected]);P2.selectMany([...selected],false);syncSelectedActions();}
+function selectDrawingPosition(id,source,meta){host.select(basePositionId(id),meta);}
+function clearDrawingSelection(){host.clearSelection();}
+  function safeFileName(v){return String(v||'PLMR-GIYOTIN').replace(/[^A-Za-z0-9ÇĞİÖŞÜçğıöşü_.-]+/g,'-');}
+  function basePositionId(id){const exact=project.positions.find(p=>p.id===id);if(exact)return exact.id;const raw=String(id||'');const cut=raw.indexOf('-Q');return cut>0?raw.slice(0,cut):raw;}
+  function layoutColumns(){const mode=String(project.layout.mode||'AUTO').toUpperCase();if(mode==='ONE_COLUMN')return 1;if(mode==='TWO_COLUMNS')return 2;const m=mode.match(/COLUMNS?_(\d+)/);return m?Math.max(1,Math.min(10,Number(m[1]))):2;}
+  function dimensionUnits(){const u=project&&project.drawingSettings&&project.drawingSettings.dimensionUnits||{};return {mm:u.mm!==false,inch:Boolean(u.inch)};}
+  function escapeHtml(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function validate(show=true){const result=S.validateProject(project);if(show)host.status(result.valid?'Tüm Giyotin pozları geçerli.':result.errors.map(e=>e.message).join(' · '),!result.valid);return result;}
+
+  function build2dDocument(){last2dDocument=D2.buildDocument(project,{columns:layoutColumns(),dimensionUnits:dimensionUnits()});return last2dDocument;}
+  function show2d(document){const two=$('twoDViewport'),three=$('threeViewport'),help=$('viewerHelp'),stage=two&&two.parentElement;if(three)three.hidden=true;if(two)two.hidden=false;if(stage)stage.classList.add('is-2d');if(help)help.hidden=true;P2.render(two,document,{fit:true,selectedId:project.drawingSettings.selectedPositionId,selectedIds:[...selected],showDimensions:project.drawingSettings.showDimensions,onSelect:(id,meta)=>selectDrawingPosition(id,'2D',meta),onClearSelection:()=>clearDrawingSelection('2D'),onViewChange:()=>{viewFitted=false;renderControls()}});viewFitted=true;syncSelectedActions();lastInspection=P2.inspect();$('previewMeta').textContent=`A0 2D pafta · ${document.positions.length} poz · ${document.columns} sütun · premium vektörel önizleme`;}
+  function show3d(options={}){const two=$('twoDViewport'),three=$('threeViewport'),help=$('viewerHelp'),stage=three&&three.parentElement;if(two)two.hidden=true;if(three)three.hidden=false;if(stage)stage.classList.remove('is-2d');if(help){help.hidden=false;help.textContent='Sol sürükle: döndür · Tekerlek: zoom · Sağ sürükle: pan · Modele çift tıkla: o pozu aç/kapat';}const items=S.drawingItems(project,RAL),preserveView=Boolean(options.preserveView)||Boolean(viewerReady&&lastInspection&&previewMode==='3D');lastInspection=V.render(items,{columns:layoutColumns(),preserveView});if(!preserveView)viewFitted=true;if(selected.size>1&&V.highlightMany)V.highlightMany([...selected]);else if(project.drawingSettings.selectedPositionId)V.highlight(project.drawingSettings.selectedPositionId);syncSelectedActions();$('previewMeta').textContent=`${items.length} 3D poz · ${layoutColumns()} sütun · ${lastInspection.meshes} mesh`;}
+  function setPreviewMode(mode){previewMode=mode==='2D'?'2D':'3D';host.preferencesChanged?.({previewMode});renderControls();draw(true,{preserveView:true});}
+  function fitActiveView(){if(previewMode==='2D')P2.fit();else V.fit();viewFitted=true;renderControls();}
+  function draw(quiet=false,options={}){const result=validate(!quiet);renderControls();if(!result.valid){last2dDocument=null;$('twoDViewport').innerHTML='';if(viewerReady)V.render([],{columns:layoutColumns()});$('previewMeta').textContent='Geçerli ölçü bekleniyor';if(!quiet)setStatus(result.errors[0].message,true);return false;}try{const document=build2dDocument();if(previewMode==='2D')show2d(document);else show3d(options);renderControls();if(!quiet)setStatus(previewMode==='2D'?`${document.positions.length} Giyotin pozu canonical 2D pafta modelinden oluşturuldu.`:`${document.positions.length} Giyotin pozu standartlaştırılmış 3D geometrisiyle oluşturuldu.`);return true;}catch(e){setStatus(`${previewMode} çizim oluşturulamadı: ${e.message||e}`,true);return false;}}
+  function animateStateChange(beforeItems,afterItems,message){try{V.animateTransition(beforeItems,afterItems,{columns:layoutColumns(),});$('previewMeta').textContent=`${afterItems.length} 3D poz · ${layoutColumns()} sütun · yumuşak panel hareketi`;setStatus(message||'Giyotin panelleri yumuşak geçişle hareket ediyor.');return true;}catch(e){setStatus(`3D animasyon başlatılamadı: ${e.message||e}`,true);draw(true,{preserveView:true});return false;}}
+
+  async function downloadDrawingPdf(mode){if(!canExport())return;const result=validate(true);if(!result.valid)return;try{const output=await root.PLMRGiyotinOutput.render(project,mode,host.colors),jpeg=await Pdf.svgToJpeg(output.svg,{width:4960,height:3508,quality:.985}),pdf=Pdf.imagePdfFromJpeg(jpeg.bytes,jpeg.width,jpeg.height,{margin:10}),name=`${safeFileName(project.projectInfo.projectName||project.projectInfo.projectCode)}-${mode}-A0.pdf`;download(name,pdf,'application/pdf');setStatus(`${name} kapalı, ölçülü ve paftaya sığdırılmış olarak indirildi.`);}catch(e){setStatus(`${mode} PDF oluşturulamadı: ${e.message||e}`,true);}}
+  function download2dPdf(){return downloadDrawingPdf('2D');}
+  function downloadDxf(){if(!canExport())return;const result=validate(true);if(!result.valid){setStatus(result.errors[0].message,true);return;}try{const generated=Dxf.exportProject(project,{columns:layoutColumns(),dimensionUnits:dimensionUnits()});last2dDocument=generated.document;Dxf.structuralCheck(generated.dxf);const name=`${safeFileName(project.projectInfo.projectName||project.projectInfo.projectCode)}.dxf`;download(name,generated.dxf,'application/dxf');if(previewMode==='2D')show2d(last2dDocument);setStatus(`${name} AutoCAD 2018 / AC1032 native ölçülendirme katmanlı DXF olarak indirildi.`);}catch(e){setStatus(`DXF oluşturulamadı: ${e.message||e}`,true);}}
+  function download3dPdf(){return downloadDrawingPdf('3D');}
+  function downloadDae(){if(!canExport())return;const result=validate(true);if(!result.valid){setStatus(result.errors[0].message,true);return;}try{const items=S.drawingItems(project,RAL),dae=Dae.exportItems(items,{columns:layoutColumns()});const name=`${safeFileName(project.projectInfo.projectName||project.projectInfo.projectCode)}.dae`;download(name,dae,'model/vnd.collada+xml;charset=utf-8');setStatus(`${name} SketchUp/COLLADA modeli indirildi.`);}catch(e){setStatus(`DAE oluşturulamadı: ${e.message||e}`,true);}}
+
+let lastInput=initialInput,unitOverridden=false;
+function update(next,ids){if(next===lastInput){selected=new Set(ids||[]);applySelection();renderControls();return;}const unitChanged=next.commonSettings.outputUnit!==lastInput.commonSettings.outputUnit;lastInput=next;const prefs={layout:next.layout,drawingSettings:{...project.drawingSettings,...(unitChanged&&!unitOverridden?{dimensionUnits:next.drawingSettings.dimensionUnits}:{})}};project={...next,...prefs};selected=new Set(ids||[]);applySelection();draw(true,{preserveView:true});}
+function toggle(id){const before=S.drawingItems(project,RAL),base=basePositionId(id);if(id){const old=project.drawingSettings.positionOpenStates[base]||project.drawingSettings.openState;project.drawingSettings.positionOpenStates[base]=old==='OPEN'?'CLOSED':'OPEN';}else{project.drawingSettings.openState=project.drawingSettings.openState==='OPEN'?'CLOSED':'OPEN';project.drawingSettings.positionOpenStates={};}const after=S.drawingItems(project,RAL);renderControls();if(previewMode==='3D'&&viewerReady)animateStateChange(before,after);else draw(true);}
+try{V.init($('threeViewport'),{onSelect:(id,meta)=>selectDrawingPosition(id,'3D',meta),onToggle:id=>toggle(id),onClearSelection:clearDrawingSelection,onViewChange:()=>{viewFitted=false;renderControls()},onCameraChange:(state)=>host.cameraChanged?.(state)});viewerReady=true;}catch(e){setStatus('3D görüntüleyici: '+e.message,true);}
+on('productionBtn','click',()=>{if(host.canProduce?.()&&!host.readOnly())host.produce?.()});
+on('validateBtn','click',()=>{const r=validate(false);host.status(r.valid?'Kontrol tamamlandı; tüm pozlar tanımlı sınırlar içinde.':r.errors.map(x=>x.message).join(' · '),!r.valid);});
+on('drawBtn','click',()=>draw(false));
+on('preview2dBtn','click',()=>setPreviewMode('2D'));on('preview3dBtn','click',()=>{if(viewerReady)setPreviewMode('3D');});
+on('fitViewBtn','click',fitActiveView);on('toggleDimensionsBtn','click',()=>{project.drawingSettings.showDimensions=!project.drawingSettings.showDimensions;draw(true,{preserveView:true});});
+on('toggleOpenStateBtn','click',()=>toggle());on('previewColumnsSelect','change',e=>{if(host.readOnly())return;host.columnsChanged?.(Number(e.target.value));project.layout={...project.layout,mode:'COLUMNS_'+e.target.value,columnCount:Number(e.target.value)};draw(true);});
+['mm','inch'].forEach(key=>on(key==='mm'?'previewMmBtn':'previewInchBtn','click',()=>{const u=dimensionUnits();if(u[key]&&!u[key==='mm'?'inch':'mm'])return;unitOverridden=true;project.drawingSettings.dimensionUnits={...u,[key]:!u[key]};host.preferencesChanged?.({dimensionUnits:project.drawingSettings.dimensionUnits});draw(true,{preserveView:true});}));
+on('download2dPdfBtn','click',download2dPdf);on('downloadDxfBtn','click',downloadDxf);on('download3dPdfBtn','click',download3dPdf);on('downloadDaeBtn','click',downloadDae);
+on('selectedEditPositionBtn','click',()=>host.edit([...selected][0]));on('selectedDeletePositionBtn','click',()=>host.remove([...selected]));
+draw(true);
+return {update,setView:(view)=>V.setStandardView?.(view),cameraState:()=>V.cameraState?.(),dispose(){disposed=true;handlers.forEach(f=>f());V.dispose();target.innerHTML='';},inspect:()=>lastInspection};
+};
+})(window);

@@ -1,0 +1,1 @@
+import{l as t}from"./workbookImport-Bl3blSGi.js";const r=["A0","A1","A2","A3","A4"],a=()=>t("./drawing-engine/assets/pdf/plmr-pdf.js");async function d(n,e,o,s){return await a(),window.PLMRPdf.image(n,e,o,s)}async function c(n){return await a(),window.PLMRPdf.documents(n)}export{r as d,a as e,d as i,c as v};

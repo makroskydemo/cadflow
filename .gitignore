@@ -1,0 +1,12 @@
+_site/
+node_modules/
+.env
+.env.*
+!.env.example
+supabase.public.local.json
+.plmr-shares/
+*.log
+.DS_Store
+Thumbs.db
+.cadflow-upload/
+PLMR_YUKLEME_AYARLARI.json

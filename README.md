@@ -1,15 +1,24 @@
-# MAKROSKY CadFlow
+MAKROSKY CadFlow V3
+===================
 
-Independent customer demonstration repository for MAKROSKY CadFlow.
+GitHub target: https://github.com/makroskydemo/cadflow.git (main).
+Supabase project: https://rqstvpmqgkdghrbokbzn.supabase.co.
 
-## Deployment
+Open index.html from this folder for a clean offline review. The first screen
+creates a local administrator. Local records are separate from the cloud.
 
-The Windows upload package uses **Git for Windows** and **Windows PowerShell 5.1**. It no longer requires Node.js on the local computer.
+For local HTTP/cloud use, copy supabase.public.example.json to
+supabase.public.local.json, set supabasePublishableKey to the MAKROSKY project
+publishable key, then run BASLAT_WINDOWS.bat or npm start.
 
-Use `01_APPLICATION/hizliyukle.bat` from the extracted release package. The uploader validates its target, web-source checksums and public-only credentials, then pushes sources to this repository's `main` branch.
+On GitHub, select Actions as the GitHub Pages source and set the repository
+MAKROSKY public key in supabase.public.json to that same publishable key.
+Run hizliyukle.bat from this folder with Git for Windows (Node.js NOT required locally).
+It validates the web source hashes and public-only config, scans publication
+files, commits and pushes main. GitHub Actions runs Node.js 24 build/verify
+before Pages publishing. Confirm publication separately in GitHub Actions.
 
-GitHub Actions workflow `Publish MAKROSKY CadFlow` will use Node.js 24 to build, verify, and publish GitHub Pages. GitHub Pages must be configured with **Settings > Pages > Build and deployment > Source: GitHub Actions**.
 
-**Note:** The presence of this README only proves repository write access. The application is not deployed until the source upload and the subsequent Pages workflow succeed.
+### V5 Windows GitHub deployment
 
-Target Supabase project: `rqstvpmqgkdghrbokbzn`. Do not upload service-role or secret keys.
+Local Node.js is no longer required for `hizliyukle.bat`. Git for Windows and Windows PowerShell 5.1 are sufficient to stage and push validated sources. The GitHub Actions workflow runs Node.js 24, `npm run build`, and `npm run verify` before publishing to GitHub Pages.
