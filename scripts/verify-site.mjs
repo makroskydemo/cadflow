@@ -14,7 +14,7 @@ export async function verifySite(root = path.join(runtimeRoot, '_site')) {
       !/^sb_publishable_[A-Za-z0-9_-]{16,}$/.test(cloudConfig.supabasePublishableKey)) {
     throw Error('CadFlow cloud config missing or invalid in publication.');
   }
-  const mainEntries=Object.keys(manifest.files).filter(name=>/^assets\\/index-[A-Za-z0-9_-]+\\.js$/.test(name));
+  const mainEntries=Object.keys(manifest.files).filter(name=>/^assets\/index-[A-Za-z0-9_-]+\.js$/.test(name));
   if(mainEntries.length!==1)throw Error('Cloud-configured CadFlow entry script was not found.');
   const builtEntry=await fs.readFile(path.join(root,mainEntries[0]),'utf8');
   const expectedCloudConfig=`supabaseUrl:${JSON.stringify(cloudConfig.supabaseUrl)},supabasePublishableKey:${JSON.stringify(cloudConfig.supabasePublishableKey)}`;
