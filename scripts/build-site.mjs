@@ -50,7 +50,7 @@ export async function buildSite(root = runtimeRoot, destination = path.join(root
     let output = content;
     // Runtime configuration is public metadata, not a secret. Embedding it in
     // the final browser bundle avoids a fragile extra config fetch at startup.
-    if (/^assets\\/index-[A-Za-z0-9_-]+\\.js$/.test(relative)) {
+    if (/^assets\/index-[A-Za-z0-9_-]+\.js$/.test(relative)) {
       const code = content.toString('utf8');
       const oldValue = `supabaseUrl:${JSON.stringify(config.supabaseUrl)},supabasePublishableKey:""`;
       const newValue = `supabaseUrl:${JSON.stringify(config.supabaseUrl)},supabasePublishableKey:${JSON.stringify(config.supabasePublishableKey)}`;
