@@ -8,6 +8,17 @@ const runtimeRoot = fileURLToPath(new URL('..', import.meta.url));
 export async function verifySite(root = path.join(runtimeRoot, '_site')) {
   const manifest = JSON.parse(await fs.readFile(path.join(root, 'deployment-manifest.json'), 'utf8'));
   const entry=await fs.readFile(path.join(root,'index.html'),'utf8');
+  const cloudConfig=JSON.parse(await fs.readFile(path.join(root,'plmr-public-config.json'),'utf8'));
+  if (!manifest.supabaseConnectionConfigured || !cloudConfig.configured ||
+      cloudConfig.supabaseUrl!=='https://rqstvpmqgkdghrbokbzn.supabase.co' ||
+      !/^sb_publishable_[A-Za-z0-9_-]{16,}$/.test(cloudConfig.supabasePublishableKey)) {
+    throw Error('CadFlow cloud config missing or invalid in publication.');
+  }
+  const mainEntries=Object.keys(manifest.files).filter(name=>/^assets\\/index-[A-Za-z0-9_-]+\\.js$/.test(name));
+  if(mainEntries.length!==1)throw Error('Cloud-configured CadFlow entry script was not found.');
+  const builtEntry=await fs.readFile(path.join(root,mainEntries[0]),'utf8');
+  const expectedCloudConfig=`supabaseUrl:${JSON.stringify(cloudConfig.supabaseUrl)},supabasePublishableKey:${JSON.stringify(cloudConfig.supabasePublishableKey)}`;
+  if(!builtEntry.includes(expectedCloudConfig))throw Error('Public cloud key was not embedded in the browser entry script.');
   if(manifest.webRuntime!=='split'||entry.length>5000||!/<script\s+type="module"[^>]+src=/.test(entry))throw Error('Parçalı web girişi yayınlanmadı.');
   const names = (await filesIn(root)).map(file => path.relative(root, file).split(path.sep).join('/'));
   const expected = new Set([...Object.keys(manifest.files), manifest.selfExcluded]);
