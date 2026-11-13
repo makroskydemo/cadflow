@@ -25,6 +25,8 @@ export async function buildSite(root = runtimeRoot, destination = path.join(root
     throw Error('Yayın çıktısı uygulama girişinin veya varlıklarının üzerine yazılamaz.');
   }
   const config = await readPublicConfig(root, env);
+  if (!config.configured) throw Error('MAKROSKY public Supabase configuration is required for publication.');
+  let patchedEntryCount = 0;
   const web=JSON.parse(await fs.readFile(path.join(root,'web/WEB_FILES.json'),'utf8'));
   if(web.release!=='MakroskyCadFlow_FinalProcess_v1'||!web.files?.['index.html']||!web.files?.['sw.js'])throw Error('V51 web derlemesi eksik veya eski.');
   for (const name of publicEntries) await fs.access(path.join(root, name));
@@ -44,8 +46,21 @@ export async function buildSite(root = runtimeRoot, destination = path.join(root
     const content=await fs.readFile(path.join(root,'web',relative));
     if(crypto.createHash('sha256').update(content).digest('hex')!==digest)throw Error('Web varlık hash uyuşmazlığı: '+relative);
     const target=path.join(destination,relative);
-    await fs.mkdir(path.dirname(target),{recursive:true});await fs.writeFile(target,content);
+    await fs.mkdir(path.dirname(target),{recursive:true});
+    let output = content;
+    // Runtime configuration is public metadata, not a secret. Embedding it in
+    // the final browser bundle avoids a fragile extra config fetch at startup.
+    if (/^assets\\/index-[A-Za-z0-9_-]+\\.js$/.test(relative)) {
+      const code = content.toString('utf8');
+      const oldValue = `supabaseUrl:${JSON.stringify(config.supabaseUrl)},supabasePublishableKey:""`;
+      const newValue = `supabaseUrl:${JSON.stringify(config.supabaseUrl)},supabasePublishableKey:${JSON.stringify(config.supabasePublishableKey)}`;
+      if (code.split(oldValue).length !== 2) throw Error('CadFlow application entry public config slot missing or ambiguous.');
+      output = Buffer.from(code.replace(oldValue, newValue), 'utf8');
+      patchedEntryCount++;
+    }
+    await fs.writeFile(target,output);
   }
+  if (patchedEntryCount !== 1) throw Error('Exactly one CadFlow entry chunk must receive public cloud configuration.');
   await fs.writeFile(path.join(destination, '.nojekyll'), '');
   await fs.writeFile(path.join(destination, 'plmr-public-config.json'), JSON.stringify(config, null, 2) + '\n');
   const hashes = {};
