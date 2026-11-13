@@ -1,0 +1,1 @@
+import factory from './webp_enc.js';import {defaultOptions} from './meta.js';let ready;window.PLMRWebP={encode:async(data,lossless)=>{ready||=factory();const module=await ready;const result=module.encode(data.data,data.width,data.height,{...defaultOptions,quality:92,method:4,lossless:lossless?1:0,exact:1});if(!result)throw Error('WebP oluşturulamadı.');return result.buffer;}};

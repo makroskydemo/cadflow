@@ -1,0 +1,20 @@
+/* Bounded right toolbar and the existing V53 compact product groups. */
+.rr-v45-shell .v33-side-toolbar.open{width:248px;box-sizing:border-box;overflow-x:hidden}
+.rr-v45-shell .v33-side-grid{display:block;width:100%;max-width:100%;box-sizing:border-box;overflow-x:hidden;overflow-y:auto;min-width:0;padding:0 3px 3px 0}
+.rr-v45-shell .rr-side-extra,.rr-v11-camera-group,.rr-v11-context,.rr-v11-bulk{min-width:0;max-width:100%;box-sizing:border-box}
+.rr-v45-shell .rr-side-extra button{max-width:100%;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere}
+.rr-v45-shell .rr-v11-context,.rr-v45-shell .rr-v11-bulk{grid-template-columns:repeat(2,minmax(0,1fr))}
+.rr-v45-shell .rr-v11-context button,.rr-v45-shell .rr-v11-bulk button{height:auto;min-height:33px;padding:6px;line-height:1.25;min-width:0}
+.rr-v45-shell .rr-v11-context small,.rr-v45-shell .rr-v11-bulk small{overflow-wrap:anywhere}
+.rr-v45-shell .rr-parapet-control input,.rr-v45-shell .rr-side-extra select{width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+#rrV16ProductDetails{min-width:0}.rr-v16-empty{padding:18px;color:#64748b;font:12px Segoe UI}
+#rrV16ProductDetails .table-wrap{max-width:100%;overflow-x:auto}
+#rrV16ProductDetails .positions-table.v37-compact-summary{min-width:0;width:100%;table-layout:fixed}
+#rrV16ProductDetails th,#rrV16ProductDetails td{white-space:normal!important;overflow-wrap:anywhere;padding:8px 6px!important;vertical-align:top}
+#rrV16ProductDetails th{font-size:8px}#rrV16ProductDetails .plmr-detail-stack>span{font-size:10px}#rrV16ProductDetails .plmr-detail-stack>span>b{font-size:8px}
+#rrV16ProductDetails button{max-width:100%;min-width:0;white-space:normal;font-size:9px}
+.rr-v16-zone-row{padding-left:14px}.rr-v11-filter-menu details{margin-top:6px;border-top:1px solid #e2e8f0;padding-top:5px}.rr-v11-filter-menu summary{cursor:pointer;font:600 12px Segoe UI;color:#36586b}
+@media(max-width:1100px){.rr-v45-shell .v33-side-toolbar.open{width:224px}}
+/* These controls now have canonical handlers for the bioclimatic product. */
+body.rr-v45-shell-active #pergoOptionsResetBtn,body.rr-v45-shell-active #pergoExtraResetBtn,body.rr-v45-shell-active #pergoSystemResetBtn,body.rr-v45-shell-active #pergoResetAllBtn{pointer-events:auto!important;opacity:1!important}
+#rrV45SettingsModal .rr-v16-settings-reset{padding:6px 10px;min-width:0;font:12px Segoe UI;white-space:normal;border:1px solid #ffc174;border-radius:5px;background:#fff9f1;color:#27364a;cursor:pointer}
