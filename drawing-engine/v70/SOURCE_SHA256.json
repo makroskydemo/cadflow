@@ -1,0 +1,22 @@
+{
+  "v70/source/components/GiyotinWorkspaceFields.tsx": "3a21368689d2ee1ae43a0d0e4840a287880684974254267c96f344d32e839647",
+  "v70/source/domain/glass.ts": "347f1fb10021b77f9933760a52ea1981e3acef40b74b1fe2f042b6d48ad83aaf",
+  "v70/source/domain/giyotinValidation.ts": "550236beb4a47585191bcda4967ebcdae112fbe7e8c8424c6dd7478908d599d1",
+  "v70/source/domain/giyotinColor.ts": "e28ec53497f07080e62534d3107b3a13b3a305c4d290c8284b24fe1049e0cd03",
+  "v70/source/domain/giyotinRemotes.ts": "529f6fb3e482bc44ac62428f5277af8a41274cecde7cd9f98ee619f787ee04d6",
+  "v70/source/components/PositionEditorTable.tsx": "f5b6677c08786ce69c4bccf6915dbfd131e75c16efe690dbce872585e665d00c",
+  "v70/source/components/WorkspaceForm.tsx": "8151babcfa4898d6dc9c2b62c48f663afe9a9b6347fa03e48330aaf98d54cb4b",
+  "v70/source/data/ralColorCatalog.ts": "0e648e2f706bdb6e9f1d22c7b1b9252367430675470438517ee2db14b1f1b4e9",
+  "v70/source/components/GiyotinRemoteSettings.tsx": "19055ef980029f8ed8705b4ce47c84b4a7f80c87259d05b057e565bef52f318d",
+  "v70/source/domain/drawing.ts": "a397a542ec15d1be21057c7057ad220cc4e6baea01fa695f70eebfdef208051f",
+  "v70/source/domain/positionUnits.ts": "f36aedeae84b9db40dca9e90766cf729f41b1030a7704827e593fcc7b6034a25",
+  "v70/source/components/PositionDimensionInput.tsx": "ba3fa78103c6c634db0c23c88c124dbfc340f44620e6140ffdaa6ea3019d1996",
+  "v70/source/components/SurmeWorkspaceFields.tsx": "221bb0d422b4dc37b37c758bf57592eac0954dad98a72570efc793c158f52574",
+  "v70/source/domain/sliding.ts": "4bad917bd9534bce0994964c89e460f776f8c190f25f591e821990fe79096b1e",
+  "v70/source/domain/slidingPanelCount.ts": "097d02f0f4ca3675282257b3d78d45c76251a8546f0a7623300355fa3fb10da9",
+  "v70/source/engines/giyotinAdapter.ts": "bcd209aed21de0b3dba41371cf1b1519a9df1d2ac19f4aa92340703bfc5e40b9",
+  "v70/source/engines/surmeAdapter.ts": "45a1b5f924d78b04cbdd9e645b3c93411a0dbc6dee80ac9abb624de560872e54",
+  "v70/source/engines/projectLayout.ts": "3ac817221cdf2224e81372d856c39d765062ab9c5367afe4bd16c6c8ce78658c",
+  "v70/source/engines/projectGeometry.ts": "322774ad3cfcd98217dafce4e267e89a22abefc886785f1e59193492712044ac",
+  "v70/source/engines/compositeDimensions.ts": "727760ac1342d5793ad7ccc494b62367802f2df56902f6644224bc505f7e883b"
+}
