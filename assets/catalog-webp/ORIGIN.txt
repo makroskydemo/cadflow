@@ -1,1 +1,0 @@
-@jsquash/webp 1.5.0 / npm registry archive / Apache-2.0. Unmodified scalar WebP encoder and WASM; loaded only on an explicit catalog image operation. entry.js is the PLMR adapter. lossless=1/exact=1 for technical images; quality=92 for photographs.
