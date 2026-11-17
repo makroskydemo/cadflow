@@ -1,0 +1,98 @@
+.rr-v45-shell .v33-tool.petrol{background:#12596a;color:#fff;border-color:#104454}.rr-v45-shell .v33-tool.petrol:hover{background:#17495f}
+.plmr-animation-panel,.plmr-animation-share,.plmr-animation-player{font:14px/1.45 'Segoe UI',sans-serif;color:#173749;background:#fff;box-shadow:0 12px 36px #17374933;border:1px solid #c5d4df;border-radius:12px;box-sizing:border-box}
+.plmr-animation-panel{position:fixed;z-index:600;right:20px;top:110px;width:420px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 130px);overflow:auto;padding:18px}
+.plmr-animation-panel[hidden],.plmr-animation-backdrop[hidden],.plmr-animation-player[hidden]{display:none!important}
+.plmr-animation-panel header,.plmr-animation-share header{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:18px}.plmr-animation-panel header button,.plmr-animation-share header button{font-size:23px;padding:0 9px}
+.plmr-animation-panel p,.plmr-animation-share p{margin:12px 0}.plmr-animation-panel small,.plmr-animation-share small{color:#587084}
+.plmr-animation-panel ol{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}.plmr-animation-panel li{display:grid;grid-template-columns:24px 1fr auto auto;gap:6px;align-items:center;padding:10px 8px;background:#eef4f7;border-radius:8px}.plmr-animation-panel li input{grid-column:2/5;width:100%}.plmr-scene-number{color:#12596a;font-weight:700}
+.plmr-animation-panel button,.plmr-animation-share button,.plmr-animation-player button,.plmr-animation-share a{background:#12596a;color:#fff;border:0;border-radius:6px;padding:8px 10px;cursor:pointer;font:inherit;text-decoration:none}.plmr-animation-panel button:disabled,.plmr-animation-share button:disabled,.plmr-animation-player button:disabled{opacity:.45;cursor:default}
+.plmr-animation-actions{display:flex;gap:8px;flex-wrap:wrap}.plmr-animation-panel input,.plmr-animation-share input{box-sizing:border-box;border:1px solid #aec3cf;border-radius:5px;background:white;padding:8px;color:#173749;font:inherit;min-width:0}.plmr-animation-share input{width:100%;margin:7px 0 12px}
+.plmr-animation-backdrop{position:fixed;inset:0;background:#17374966;z-index:650;display:flex;align-items:center;justify-content:center;padding:16px}.plmr-animation-share{padding:22px;width:580px;max-width:100%;max-height:90dvh;overflow:auto}
+.plmr-animation-player{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:620;width:620px;max-width:calc(100vw - 24px);padding:14px 18px;display:grid;gap:9px}.plmr-animation-player input{width:100%;accent-color:#12596a}.plmr-animation-player small{min-height:21px}
+.plmr-presentation-mode body{overflow:hidden!important}.plmr-presentation-mode .v33-top-toolbar,.plmr-presentation-mode .v33-left-panel,.plmr-presentation-mode .v33-side-toolbar,.plmr-presentation-mode .v33-bottom-drawer,.plmr-presentation-mode .v33-drawer-splitter,.plmr-presentation-mode .v33-stage-head,.plmr-presentation-mode .v33-bottom-info,.plmr-presentation-mode .rr-preview-dock,.plmr-presentation-mode .viewer-meta,.plmr-presentation-mode #rrV45ToolbarMessage,.plmr-presentation-mode .preview-input-guidance{display:none!important}
+.plmr-presentation-mode #rrV45EngineHost{position:fixed!important;inset:0!important;z-index:200;background:#eaf1f6}.plmr-presentation-mode #expandedPreviewWorkspace,.plmr-presentation-mode .plmr-preview-canvas{width:100%!important;height:100dvh!important;min-height:0!important;border:0!important;padding:0!important}.plmr-presentation-mode #viewerFrame{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border:0!important}
+.plmr-presentation-mode .rr-settings-backdrop,.plmr-presentation-mode .rr-v45-shell>aside,.plmr-presentation-mode .v33-toolbar-view,.plmr-presentation-mode .rr-v11-context,.plmr-presentation-mode .rr-v11-bulk{display:none!important}
+@media(max-width:600px){.plmr-animation-panel{right:12px;top:75px;max-height:calc(100dvh - 90px)}.plmr-animation-player{bottom:max(12px,env(safe-area-inset-bottom));padding:12px}.plmr-animation-player button{padding:9px 11px}.plmr-animation-player strong{font-size:15px}}
+
+.plmr-presentation-mode .v33-scene-dock,.plmr-presentation-mode .rr-v11-filter-menu,.plmr-presentation-mode .plmr-preview-toolbox{display:none!important}
+
+.plmr-animation-preview-active .rr-v45-shell{pointer-events:none}
+
+/* V23: one accent and one clean viewer shared by author preview and customer playback. */
+:root{--plmr-animation-accent:#12596a;--plmr-animation-hover:#17495f}
+.rr-v45-shell .v33-tool.petrol{background:var(--plmr-animation-accent)!important;border-color:var(--plmr-animation-accent)!important;color:#fff!important}
+.plmr-animation-panel button,.plmr-animation-share button,.plmr-animation-player button,.plmr-animation-share a{background:var(--plmr-animation-accent)}
+.plmr-animation-panel button:hover:not(:disabled),.plmr-animation-player button:hover:not(:disabled),.rr-v45-shell .v33-tool.petrol:hover{background:var(--plmr-animation-hover)!important}
+.plmr-animation-panel li{grid-template-columns:24px 46px 86px 32px 44px;justify-content:start;gap:7px;white-space:nowrap}
+.plmr-animation-panel li button{min-width:0;width:100%;height:35px;padding:6px 4px;box-sizing:border-box;overflow:visible;white-space:nowrap;line-height:1.2}
+.plmr-animation-preview-backdrop{position:fixed;inset:0;background:#17374999;z-index:700}
+.plmr-animation-preview-backdrop[hidden]{display:none!important}
+.plmr-animation-window{position:fixed;z-index:720;left:50%;top:calc((100dvh - 185px)/2);transform:translate(-50%,-50%);width:min(1120px,calc(100vw - 40px));height:min(670px,calc(100dvh - 235px));min-height:120px;border:4px solid var(--plmr-animation-accent);border-radius:14px;box-shadow:0 18px 64px #102e4f55;box-sizing:border-box;display:flex;flex-direction:column;pointer-events:none}
+.plmr-animation-window header{height:44px;flex:0 0 44px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;background:var(--plmr-animation-accent);color:#fff;border-radius:8px 8px 0 0;font:600 15px 'Segoe UI',sans-serif;pointer-events:auto}
+.plmr-animation-window header button{background:transparent;color:white;border:1px solid #ffffff77;border-radius:6px;width:30px;height:30px;font:24px/1 'Segoe UI';cursor:pointer}
+.plmr-animation-screen{flex:1;min-height:0;position:relative;border-radius:0 0 9px 9px}
+.plmr-animation-preview-active .rr-v45-shell{z-index:710!important;visibility:hidden;pointer-events:none;background:transparent!important}
+.plmr-animation-preview-active #rrV45EngineHost{visibility:visible;position:fixed!important;inset:auto!important;left:var(--plmr-preview-x)!important;top:var(--plmr-preview-y)!important;width:var(--plmr-preview-w)!important;height:var(--plmr-preview-h)!important;pointer-events:auto;overflow:hidden;border-radius:0 0 9px 9px}
+.plmr-animation-preview-active #expandedPreviewWorkspace,.plmr-animation-preview-active .plmr-preview-canvas{width:100%!important;height:100%!important;min-height:0!important;padding:0!important;border:0!important}
+.plmr-animation-preview-active #viewerFrame{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border:0!important;display:block!important;visibility:visible!important}
+.plmr-animation-preview-active .viewer-meta,.plmr-animation-preview-active .v33-scene-dock,.plmr-animation-preview-active .preview-input-guidance,.plmr-animation-preview-active .plmr-preview-toolbox{display:none!important}
+.plmr-animation-preview-active .plmr-animation-player{z-index:730;border:2px solid var(--plmr-animation-accent)}
+.plmr-presentation-mode .rr-v45-shell{visibility:hidden}.plmr-presentation-mode #rrV45EngineHost{visibility:visible}
+@media(max-width:600px){.plmr-animation-panel li{grid-template-columns:20px 42px 80px 30px 40px;gap:5px;padding:9px 6px}.plmr-animation-window{width:calc(100vw - 24px);top:calc((100dvh - 190px)/2);height:calc(100dvh - 230px)}.plmr-animation-preview-active .plmr-animation-player{bottom:12px}}
+.plmr-animation-preview-active #rrV45Workspace *,.plmr-presentation-mode #rrV45Workspace *{visibility:hidden!important}
+.plmr-animation-preview-active #rrV45Workspace #rrV45EngineHost,.plmr-animation-preview-active #rrV45Workspace #rrV45EngineHost *,.plmr-presentation-mode #rrV45Workspace #rrV45EngineHost,.plmr-presentation-mode #rrV45Workspace #rrV45EngineHost *{visibility:visible!important}
+
+/* Compact overlay for the recipient's scene. Keep native touch targets and range input. */
+.plmr-presentation-mode .plmr-animation-player {
+  bottom:max(6px, env(safe-area-inset-bottom));
+  width:min(440px, calc(100vw - 16px));
+  padding:5px 8px;
+  gap:2px 8px;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:center;
+  color:#fff;
+  background:rgba(20,40,51,.76);
+  border:1px solid #ffffff38;
+  border-radius:9px;
+  box-shadow:none;
+}
+.plmr-presentation-mode #rrV22PlayerTitle {
+  grid-column:1/-1;
+  min-width:0;
+  font-size:12px;
+  line-height:1.3;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.plmr-presentation-mode .plmr-animation-actions {gap:4px;flex-wrap:nowrap}
+.plmr-presentation-mode .plmr-animation-actions button {padding:0 7px;min-height:44px;font-size:11px}
+.plmr-presentation-mode .plmr-animation-player input {min-width:0;margin:0;min-height:34px;accent-color:#d5e9ec}
+.plmr-presentation-mode .plmr-animation-player small {
+  grid-column:1/-1;
+  min-height:0;
+  font-size:10px;
+  line-height:1.3;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.plmr-animation-player .plmr-playback-button {
+  display:inline-grid;
+  place-items:center;
+  inline-size:44px;
+  block-size:44px;
+  padding:0;
+}
+.plmr-playback-icon {display:block;inline-size:18px;block-size:18px;color:inherit}
+.plmr-playback-icon.is-play {
+  background:currentColor;
+  clip-path:polygon(22% 4%, 94% 50%, 22% 96%);
+}
+.plmr-playback-icon.is-pause {
+  background:linear-gradient(to right, transparent 16%, currentColor 16% 39%, transparent 39% 61%, currentColor 61% 84%, transparent 84%);
+  block-size:15px;
+}
+.plmr-playback-icon.is-restart {font:24px/18px 'Segoe UI Symbol',sans-serif}
+.plmr-playback-button:focus-visible {outline:2px solid currentColor;outline-offset:-4px}

@@ -1,0 +1,5 @@
+V16 RC / LOCAL-VALIDATED — FINAL-VERIFIED DEĞİL.
+Kanonik TypeScript build, kaynak/runtime hash kontrolü ve yerel regresyonlar geçti.
+Hosted Auth/Storage E2E, Windows gerçek yükleme ve tam 15 senaryo kabulü açık.
+Güncel kapsam: paket kökü DEVIR_NOTU.md, KABUL_MATRISI.md ve TEST_SONUCLARI.md.
+GitHub push, canlı SQL/migration/Edge deploy ve müşteri verisi değişikliği yapılmadı.

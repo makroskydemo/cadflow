@@ -1,0 +1,1 @@
+import{X as c,at as a}from"./AuthenticatedWorkspace-CikJHswm.js";const e={zagro:"Tilt & Retract",artos:"Tilt",suphan:"Retract",antero:"Retract",teton:"Tilt",cervin:"Fixed",jura:"Fixed"};function n(r,o){const t=r?c(r):o?a(o):void 0;return t&&Object.hasOwn(e,t.referenceKey)?e[t.referenceKey]:""}export{n as c};
