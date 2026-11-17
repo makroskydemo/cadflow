@@ -1,5 +1,0 @@
-Offline runtime vendor note
-===========================
-The files in this folder contain React 18.2.0 / ReactDOM 18.2.0 production code extracted from an installed local distribution for the sole purpose of building the offline PLMR runtime without network/CDN dependencies.
-React is licensed under the MIT License. Keep applicable upstream license notices when redistributing production bundles.
-No font files are included in this package.
