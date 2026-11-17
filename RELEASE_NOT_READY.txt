@@ -1,0 +1,4 @@
+V13 RC / PARTIAL — FINAL-VERIFIED DEĞİL.
+Kaynak/build, hedefli mantık/loader, izole gerçek Chromium/WebGL ve sentetik PDF testleri raporlarda.
+15 tam authenticated E2E, iki kullanıcı/lease/version conflict, tenant/RLS ve canlı Cloud iş akışları tamamlanmadı.
+Kök DEVIR_NOTU.md ve KABUL_MATRISI.md okunmalı. GitHub/Supabase yüklemesi yapılmadı.
