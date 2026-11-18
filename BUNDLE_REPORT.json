@@ -1,0 +1,704 @@
+{
+  "release": "MakroskyCadFlow_FinalProcess_v18",
+  "generatedAt": "2026-11-18T01:07:00.506Z",
+  "budgets": {
+    "initialEntryRawBytes": 5242880
+  },
+  "summary": {
+    "initialEntryRawBytes": 438822,
+    "initialFiles": [
+      "assets/index-dOZolap0.js",
+      "assets/vendor-react-vUDIHcEN.js",
+      "assets/_commonjsHelpers-CqkleIqs.js"
+    ],
+    "totalChunkBytes": 1394926,
+    "chunkCount": 42,
+    "assetCount": 7
+  },
+  "chunks": [
+    {
+      "file": "assets/index-dOZolap0.js",
+      "bytes": 296850,
+      "kib": 289.9,
+      "entry": true,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/_commonjsHelpers-CqkleIqs.js"
+      ],
+      "dynamicImports": [
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ]
+    },
+    {
+      "file": "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+      "bytes": 244778,
+      "kib": 239,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": [
+        "assets/HelpPage-YqnqMjU1.js",
+        "assets/MainMenu-BGWEkXsr.js",
+        "assets/ProjeCizimiPage--Cv1KGCB.js",
+        "assets/SilinenlerPage-BkDlnhYq.js",
+        "assets/ProjeDetay-C54tVJ5W.js",
+        "assets/ManagementPage-jazu2npt.js",
+        "assets/CustomerSetupPage-CcECwJbb.js",
+        "assets/ActiveSessionsPage--f1ENkho.js",
+        "assets/ProformaPage-Dg2Ng8Vn.js",
+        "assets/ProjectEntryWorkspace-D1N3vsY0.js",
+        "assets/CariCreatePage-d2v71BSU.js",
+        "assets/CariListPage-HzOtODL0.js",
+        "assets/BugReportPage-CxI_TmfU.js",
+        "assets/ProductsPage-BMLLsfv6.js",
+        "assets/NewProductPage-Cx66kiP_.js",
+        "assets/CloudLibraryPage-BqCIpUCj.js"
+      ]
+    },
+    {
+      "file": "assets/vendor-react-vUDIHcEN.js",
+      "bytes": 141856,
+      "kib": 138.5,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/_commonjsHelpers-CqkleIqs.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/ProjectEntryWorkspace-D1N3vsY0.js",
+      "bytes": 93280,
+      "kib": 91.1,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/index-dOZolap0.js",
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/ProjectAttachments-B-2wYxIb.js",
+        "assets/WorkspaceForm-B0bR1VOS.js",
+        "assets/CariForm-CrDz98mV.js"
+      ],
+      "dynamicImports": [
+        "assets/drawingProductList-We9a9zzs.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/QuickQuoteEditor-Bb90uUBJ.js"
+      ]
+    },
+    {
+      "file": "assets/ManagementPage-jazu2npt.js",
+      "bytes": 86428,
+      "kib": 84.4,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/CommercialProductName-_qg2-9Cz.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/CatalogUi-BwVwg6Qq.js",
+        "assets/ExtraPriceDialog-eelaHgy-.js",
+        "assets/masterDataImport-CE90YlpA.js",
+        "assets/xlsxExport-C2rgfv4s.js",
+        "assets/companyDocument-eZce0QDY.js",
+        "assets/CustomerSetupPage-CcECwJbb.js",
+        "assets/ActiveSessionsPage--f1ENkho.js",
+        "assets/DataGridFilterCell-C3cuWQr1.js",
+        "assets/TableViewPanel-B1ePvG3H.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js",
+        "assets/WorkspaceForm-B0bR1VOS.js",
+        "assets/workbookImport-ru3GpDcT.js",
+        "assets/quoteTerms-DiI_dpfe.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/MainMenu-BGWEkXsr.js",
+      "bytes": 63337,
+      "kib": 61.9,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/useProjectContentSearch-CasS7bWv.js",
+        "assets/index-dOZolap0.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/QuickQuoteEditor-Bb90uUBJ.js",
+      "bytes": 61768,
+      "kib": 60.3,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/index-dOZolap0.js",
+        "assets/ProjectEntryWorkspace-D1N3vsY0.js",
+        "assets/ExtraPriceDialog-eelaHgy-.js",
+        "assets/CatalogUi-BwVwg6Qq.js",
+        "assets/WorkspaceForm-B0bR1VOS.js",
+        "assets/companyDocument-eZce0QDY.js",
+        "assets/SavedQuickQuoteView-D9zAT3IY.js",
+        "assets/quickQuoteExport-Bv0ms1QG.js",
+        "assets/ProjectAttachments-B-2wYxIb.js",
+        "assets/commercialProductMotion-DaBHMUSN.js",
+        "assets/CariForm-CrDz98mV.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js",
+        "assets/quoteTerms-DiI_dpfe.js",
+        "assets/workbookImport-ru3GpDcT.js",
+        "assets/xlsxExport-C2rgfv4s.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/ProjeCizimiPage--Cv1KGCB.js",
+      "bytes": 50470,
+      "kib": 49.3,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/useProjectContentSearch-CasS7bWv.js",
+        "assets/index-dOZolap0.js",
+        "assets/TableViewPanel-B1ePvG3H.js",
+        "assets/xlsxExport-C2rgfv4s.js",
+        "assets/DataGridFilterCell-C3cuWQr1.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/quickQuoteExport-Bv0ms1QG.js",
+      "bytes": 39516,
+      "kib": 38.6,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/workbookImport-ru3GpDcT.js",
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/ProjectAttachments-B-2wYxIb.js",
+        "assets/quoteTerms-DiI_dpfe.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/ProjeDetay-C54tVJ5W.js",
+      "bytes": 33206,
+      "kib": 32.4,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/ProjectAttachments-B-2wYxIb.js",
+        "assets/index-dOZolap0.js",
+        "assets/WorkspaceForm-B0bR1VOS.js",
+        "assets/SavedQuickQuoteView-D9zAT3IY.js",
+        "assets/projectOverview-BUVfpKCr.js",
+        "assets/SharedState-CQmyaIiY.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/quickQuoteExport-Bv0ms1QG.js",
+        "assets/workbookImport-ru3GpDcT.js",
+        "assets/quoteTerms-DiI_dpfe.js",
+        "assets/xlsxExport-C2rgfv4s.js",
+        "assets/companyDocument-eZce0QDY.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/CariListPage-HzOtODL0.js",
+      "bytes": 32834,
+      "kib": 32.1,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/masterDataImport-CE90YlpA.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/CariForm-CrDz98mV.js",
+        "assets/xlsxExport-C2rgfv4s.js",
+        "assets/TableViewPanel-B1ePvG3H.js",
+        "assets/DataGridFilterCell-C3cuWQr1.js",
+        "assets/SharedState-CQmyaIiY.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/workbookImport-ru3GpDcT.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/CloudLibraryPage-BqCIpUCj.js",
+      "bytes": 32785,
+      "kib": 32,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/TableViewPanel-B1ePvG3H.js",
+        "assets/DataGridFilterCell-C3cuWQr1.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/WorkspaceForm-B0bR1VOS.js",
+      "bytes": 26423,
+      "kib": 25.8,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/ProductsPage-BMLLsfv6.js",
+      "bytes": 25352,
+      "kib": 24.8,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/CommercialProductName-_qg2-9Cz.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/commercialProductMotion-DaBHMUSN.js",
+        "assets/CatalogUi-BwVwg6Qq.js",
+        "assets/ProductMasterForm-B8oenmXs.js",
+        "assets/workbookImport-ru3GpDcT.js",
+        "assets/xlsxExport-C2rgfv4s.js",
+        "assets/WorkspaceForm-B0bR1VOS.js",
+        "assets/DataGridFilterCell-C3cuWQr1.js",
+        "assets/TableViewPanel-B1ePvG3H.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/CustomerSetupPage-CcECwJbb.js",
+      "bytes": 20826,
+      "kib": 20.3,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/SavedQuickQuoteView-D9zAT3IY.js",
+      "bytes": 17578,
+      "kib": 17.2,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/quickQuoteExport-Bv0ms1QG.js",
+        "assets/workbookImport-ru3GpDcT.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/xlsxExport-C2rgfv4s.js",
+        "assets/companyDocument-eZce0QDY.js",
+        "assets/ProjectAttachments-B-2wYxIb.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/ProductMasterForm-B8oenmXs.js",
+      "bytes": 16103,
+      "kib": 15.7,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/ProjectAttachments-B-2wYxIb.js",
+      "bytes": 15735,
+      "kib": 15.4,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/WorkspaceForm-B0bR1VOS.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/CariForm-CrDz98mV.js",
+      "bytes": 11963,
+      "kib": 11.7,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/SilinenlerPage-BkDlnhYq.js",
+      "bytes": 8457,
+      "kib": 8.3,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/DataGridFilterCell-C3cuWQr1.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/ProformaPage-Dg2Ng8Vn.js",
+      "bytes": 7957,
+      "kib": 7.8,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/HelpPage-YqnqMjU1.js",
+      "bytes": 7631,
+      "kib": 7.5,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/WorkspaceForm-B0bR1VOS.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/masterDataImport-CE90YlpA.js",
+      "bytes": 7405,
+      "kib": 7.2,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/workbookImport-ru3GpDcT.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/TableViewPanel-B1ePvG3H.js",
+      "bytes": 6672,
+      "kib": 6.5,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/index-dOZolap0.js",
+        "assets/vendor-react-vUDIHcEN.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/quoteTerms-DiI_dpfe.js",
+      "bytes": 5657,
+      "kib": 5.5,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/xlsxExport-C2rgfv4s.js",
+      "bytes": 5617,
+      "kib": 5.5,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/useProjectContentSearch-CasS7bWv.js",
+      "bytes": 5308,
+      "kib": 5.2,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/vendor-react-vUDIHcEN.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/CatalogUi-BwVwg6Qq.js",
+      "bytes": 4518,
+      "kib": 4.4,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/drawingProductList-We9a9zzs.js",
+      "bytes": 3919,
+      "kib": 3.8,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/index-dOZolap0.js",
+        "assets/quickQuoteExport-Bv0ms1QG.js",
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js",
+        "assets/workbookImport-ru3GpDcT.js",
+        "assets/ProjectAttachments-B-2wYxIb.js",
+        "assets/WorkspaceForm-B0bR1VOS.js",
+        "assets/quoteTerms-DiI_dpfe.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/ActiveSessionsPage--f1ENkho.js",
+      "bytes": 3863,
+      "kib": 3.8,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/workbookImport-ru3GpDcT.js",
+      "bytes": 2706,
+      "kib": 2.6,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/index-dOZolap0.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/companyDocument-eZce0QDY.js",
+      "bytes": 2392,
+      "kib": 2.3,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/quoteTerms-DiI_dpfe.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/BugReportPage-CxI_TmfU.js",
+      "bytes": 2308,
+      "kib": 2.3,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/_commonjsHelpers-CqkleIqs.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/ExtraPriceDialog-eelaHgy-.js",
+      "bytes": 2192,
+      "kib": 2.1,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/index-dOZolap0.js",
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/WorkspaceForm-B0bR1VOS.js",
+        "assets/CatalogUi-BwVwg6Qq.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/NewProductPage-Cx66kiP_.js",
+      "bytes": 1958,
+      "kib": 1.9,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/ProductMasterForm-B8oenmXs.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/DataGridFilterCell-C3cuWQr1.js",
+      "bytes": 1921,
+      "kib": 1.9,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/SharedState-CQmyaIiY.js",
+      "bytes": 1281,
+      "kib": 1.3,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/CariCreatePage-d2v71BSU.js",
+      "bytes": 837,
+      "kib": 0.8,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/index-dOZolap0.js",
+        "assets/CariForm-CrDz98mV.js",
+        "assets/_commonjsHelpers-CqkleIqs.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/projectOverview-BUVfpKCr.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/projectOverview-BUVfpKCr.js",
+      "bytes": 513,
+      "kib": 0.5,
+      "entry": false,
+      "dynamicEntry": true,
+      "imports": [],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/commercialProductMotion-DaBHMUSN.js",
+      "bytes": 310,
+      "kib": 0.3,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/CommercialProductName-_qg2-9Cz.js",
+      "bytes": 300,
+      "kib": 0.3,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [
+        "assets/vendor-react-vUDIHcEN.js",
+        "assets/AuthenticatedWorkspace-Cx-crEBF.js",
+        "assets/index-dOZolap0.js"
+      ],
+      "dynamicImports": []
+    },
+    {
+      "file": "assets/_commonjsHelpers-CqkleIqs.js",
+      "bytes": 116,
+      "kib": 0.1,
+      "entry": false,
+      "dynamicEntry": false,
+      "imports": [],
+      "dynamicImports": []
+    }
+  ],
+  "assets": [
+    {
+      "file": "assets/ProjectEntryWorkspace-allP3Lio.css",
+      "bytes": 63401
+    },
+    {
+      "file": "assets/ProjectAttachments-BAG8clw0.css",
+      "bytes": 15770
+    },
+    {
+      "file": "assets/index-D15gE6tc.css",
+      "bytes": 11904
+    },
+    {
+      "file": "assets/ProjeDetay-BMqgcxaq.css",
+      "bytes": 3737
+    },
+    {
+      "file": "assets/CariListPage-Dos0C-rW.css",
+      "bytes": 3420
+    },
+    {
+      "file": "assets/ManagementPage-BOuaYHdZ.css",
+      "bytes": 2695
+    },
+    {
+      "file": "assets/MainMenu-DZa-rmCR.css",
+      "bytes": 1874
+    }
+  ]
+}
